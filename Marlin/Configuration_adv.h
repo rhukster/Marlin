@@ -425,6 +425,8 @@
 #define E3_AUTO_FAN_PIN -1
 #define E4_AUTO_FAN_PIN -1
 #define E5_AUTO_FAN_PIN -1
+#define E6_AUTO_FAN_PIN -1
+#define E7_AUTO_FAN_PIN -1
 #define CHAMBER_AUTO_FAN_PIN -1
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
@@ -1344,6 +1346,7 @@
   //#define LCD_HAOYU_FT800CB         // Haoyu with 4.3" or 5" (480x272)
   //#define LCD_HAOYU_FT810CB         // Haoyu with 5" (800x480)
   //#define LCD_ALEPHOBJECTS_CLCD_UI  // Aleph Objects Color LCD UI
+  //#define LCD_FYSETC_TFT81050       // FYSETC with 5" (800x480)
 
   // Correct the resolution if not using the stock TFT panel.
   //#define TOUCH_UI_320x240
@@ -1410,6 +1413,7 @@
   //#define LCD_LANGUAGE_3 de
   //#define LCD_LANGUAGE_4 es
   //#define LCD_LANGUAGE_5 it
+  //#define LCD_LANGUAGE_6 hu
 
   // Use a numeric passcode for "Screen lock" keypad.
   // (recommended for smaller displays)
