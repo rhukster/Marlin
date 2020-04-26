@@ -2824,8 +2824,8 @@ void MarlinSettings::reset() {
       #endif
     );
     #if ENABLED(DISTINCT_E_FACTORS)
-      CONFIG_ECHO_START();
       LOOP_L_N(i, E_STEPPERS) {
+        CONFIG_ECHO_START();
         SERIAL_ECHOLNPAIR_P(
             PSTR("  M203 T"), (int)i
           , SP_E_STR, VOLUMETRIC_UNIT(planner.settings.max_feedrate_mm_s[E_AXIS_N(i)])
@@ -2844,12 +2844,13 @@ void MarlinSettings::reset() {
       #endif
     );
     #if ENABLED(DISTINCT_E_FACTORS)
-      CONFIG_ECHO_START();
-      LOOP_L_N(i, E_STEPPERS)
+      LOOP_L_N(i, E_STEPPERS) {
+        CONFIG_ECHO_START();
         SERIAL_ECHOLNPAIR_P(
             PSTR("  M201 T"), (int)i
           , SP_E_STR, VOLUMETRIC_UNIT(planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(i)])
         );
+      }
     #endif
 
     CONFIG_ECHO_HEADING("Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>");
@@ -3223,31 +3224,33 @@ void MarlinSettings::reset() {
 
       #if AXIS_IS_TMC(X) || AXIS_IS_TMC(Y) || AXIS_IS_TMC(Z)
         say_M906(forReplay);
-        #if AXIS_IS_TMC(X)
-          SERIAL_ECHOPAIR_P(SP_X_STR, stepperX.getMilliamps());
-        #endif
-        #if AXIS_IS_TMC(Y)
-          SERIAL_ECHOPAIR_P(SP_Y_STR, stepperY.getMilliamps());
-        #endif
-        #if AXIS_IS_TMC(Z)
-          SERIAL_ECHOPAIR_P(SP_Z_STR, stepperZ.getMilliamps());
-        #endif
-        SERIAL_EOL();
+        SERIAL_ECHOLNPAIR_P(
+          #if AXIS_IS_TMC(X)
+            SP_X_STR, stepperX.getMilliamps(),
+          #endif
+          #if AXIS_IS_TMC(Y)
+            SP_Y_STR, stepperY.getMilliamps(),
+          #endif
+          #if AXIS_IS_TMC(Z)
+            SP_Z_STR, stepperZ.getMilliamps()
+          #endif
+        );
       #endif
 
       #if AXIS_IS_TMC(X2) || AXIS_IS_TMC(Y2) || AXIS_IS_TMC(Z2)
         say_M906(forReplay);
         SERIAL_ECHOPGM(" I1");
-        #if AXIS_IS_TMC(X2)
-          SERIAL_ECHOPAIR_P(SP_X_STR, stepperX2.getMilliamps());
-        #endif
-        #if AXIS_IS_TMC(Y2)
-          SERIAL_ECHOPAIR_P(SP_Y_STR, stepperY2.getMilliamps());
-        #endif
-        #if AXIS_IS_TMC(Z2)
-          SERIAL_ECHOPAIR_P(SP_Z_STR, stepperZ2.getMilliamps());
-        #endif
-        SERIAL_EOL();
+        SERIAL_ECHOLNPAIR_P(
+          #if AXIS_IS_TMC(X2)
+            SP_X_STR, stepperX2.getMilliamps(),
+          #endif
+          #if AXIS_IS_TMC(Y2)
+            SP_Y_STR, stepperY2.getMilliamps(),
+          #endif
+          #if AXIS_IS_TMC(Z2)
+            SP_Z_STR, stepperZ2.getMilliamps()
+          #endif
+        );
       #endif
 
       #if AXIS_IS_TMC(Z3)
@@ -3450,9 +3453,9 @@ void MarlinSettings::reset() {
 
         if (chop_x || chop_y || chop_z) {
           say_M569(forReplay);
-          if (chop_x) SERIAL_ECHO_P(SP_X_STR);
-          if (chop_y) SERIAL_ECHO_P(SP_Y_STR);
-          if (chop_z) SERIAL_ECHO_P(SP_Z_STR);
+          if (chop_x) SERIAL_ECHOPGM_P(SP_X_STR);
+          if (chop_y) SERIAL_ECHOPGM_P(SP_Y_STR);
+          if (chop_z) SERIAL_ECHOPGM_P(SP_Z_STR);
           SERIAL_EOL();
         }
 
@@ -3474,9 +3477,9 @@ void MarlinSettings::reset() {
 
         if (chop_x2 || chop_y2 || chop_z2) {
           say_M569(forReplay, PSTR("I1"));
-          if (chop_x2) SERIAL_ECHO_P(SP_X_STR);
-          if (chop_y2) SERIAL_ECHO_P(SP_Y_STR);
-          if (chop_z2) SERIAL_ECHO_P(SP_Z_STR);
+          if (chop_x2) SERIAL_ECHOPGM_P(SP_X_STR);
+          if (chop_y2) SERIAL_ECHOPGM_P(SP_Y_STR);
+          if (chop_z2) SERIAL_ECHOPGM_P(SP_Z_STR);
           SERIAL_EOL();
         }
 
@@ -3522,12 +3525,14 @@ void MarlinSettings::reset() {
      */
     #if ENABLED(LIN_ADVANCE)
       CONFIG_ECHO_HEADING("Linear Advance:");
-      CONFIG_ECHO_START();
       #if EXTRUDERS < 2
+        CONFIG_ECHO_START();
         SERIAL_ECHOLNPAIR("  M900 K", planner.extruder_advance_K[0]);
       #else
-        LOOP_L_N(i, EXTRUDERS)
+        LOOP_L_N(i, EXTRUDERS) {
+          CONFIG_ECHO_START();
           SERIAL_ECHOLNPAIR("  M900 T", int(i), " K", planner.extruder_advance_K[i]);
+        }
       #endif
     #endif
 
