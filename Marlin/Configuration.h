@@ -494,9 +494,9 @@
   //#define DEFAULT_Kd 114
 
   // Hemera
-  #define DEFAULT_Kp 34.10
-  #define DEFAULT_Ki 3.18
-  #define DEFAULT_Kd 91.39
+  #define DEFAULT_Kp 34.29
+  #define DEFAULT_Ki 3.17
+  #define DEFAULT_Kd 92.57
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
@@ -527,7 +527,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -545,9 +545,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  #define DEFAULT_bedKp 61.76
+  #define DEFAULT_bedKi 8.48
+  #define DEFAULT_bedKd 299.73
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
