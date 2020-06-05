@@ -748,7 +748,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 162.44, 162.03, 800, 324.6 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.99, 160.25, 794.44, 324.6 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -2282,4 +2282,4 @@
 
 #define ST7920_DELAY_1 DELAY_NS(300)
 #define ST7920_DELAY_2 DELAY_NS(400)
-#define ST7920_DELAY_3 DELAY_NS(100)
+#define ST7920_DELAY_3 DELAY_NS(200)
