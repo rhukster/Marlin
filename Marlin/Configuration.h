@@ -1736,7 +1736,7 @@
 //
 //  Set this option if CLOCKWISE causes values to DECREASE
 //
-//#define REVERSE_ENCODER_DIRECTION
+#define REVERSE_ENCODER_DIRECTION
 
 //
 // This option reverses the encoder direction for navigating LCD menus.
@@ -2280,6 +2280,6 @@
 // Allow servo angle to be edited and saved to EEPROM
 //#define EDITABLE_SERVO_ANGLES
 
-#define ST7920_DELAY_1 DELAY_NS(300)
-#define ST7920_DELAY_2 DELAY_NS(400)
-#define ST7920_DELAY_3 DELAY_NS(200)
+// #define ST7920_DELAY_1 DELAY_NS(0)
+// #define ST7920_DELAY_2 DELAY_NS(200)
+// #define ST7920_DELAY_3 DELAY_NS(0)
