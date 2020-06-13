@@ -2419,18 +2419,18 @@
   #define X2_HYBRID_THRESHOLD     75
   #define Y_HYBRID_THRESHOLD      75
   #define Y2_HYBRID_THRESHOLD     75
-  #define Z_HYBRID_THRESHOLD       3
-  #define Z2_HYBRID_THRESHOLD      3
-  #define Z3_HYBRID_THRESHOLD      3
-  #define Z4_HYBRID_THRESHOLD      3
-  #define E0_HYBRID_THRESHOLD     30
-  #define E1_HYBRID_THRESHOLD     30
-  #define E2_HYBRID_THRESHOLD     30
-  #define E3_HYBRID_THRESHOLD     30
-  #define E4_HYBRID_THRESHOLD     30
-  #define E5_HYBRID_THRESHOLD     30
-  #define E6_HYBRID_THRESHOLD     30
-  #define E7_HYBRID_THRESHOLD     30
+  #define Z_HYBRID_THRESHOLD       9
+  #define Z2_HYBRID_THRESHOLD      9
+  #define Z3_HYBRID_THRESHOLD      9
+  #define Z4_HYBRID_THRESHOLD      9
+  #define E0_HYBRID_THRESHOLD     25
+  #define E1_HYBRID_THRESHOLD     25
+  #define E2_HYBRID_THRESHOLD     25
+  #define E3_HYBRID_THRESHOLD     25
+  #define E4_HYBRID_THRESHOLD     25
+  #define E5_HYBRID_THRESHOLD     25
+  #define E6_HYBRID_THRESHOLD     25
+  #define E7_HYBRID_THRESHOLD     25
 
   /**
    * Use StallGuard2 to home / probe X, Y, Z.
