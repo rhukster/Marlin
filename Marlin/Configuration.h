@@ -495,9 +495,9 @@
   //#define DEFAULT_Kd 114
 
   // Hemera
-  #define DEFAULT_Kp 34.29
-  #define DEFAULT_Ki 3.17
-  #define DEFAULT_Kd 92.57
+  #define DEFAULT_Kp 27.86
+  #define DEFAULT_Ki 2.42
+  #define DEFAULT_Kd 80.25
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
