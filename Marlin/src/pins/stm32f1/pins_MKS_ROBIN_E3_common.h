@@ -22,23 +22,28 @@
 #pragma once
 
 /**
- * MKS Robin Lite 3 (STM32F103RCT6) board pin assignments
+ * MKS Robin E3 & E3D (STM32F103RCT6) common board pin assignments
  */
 
 #ifndef __STM32F1__
   #error "Oops! Select an STM32F1 board in 'Tools > Board.'"
-#elif HOTENDS > 2 || E_STEPPERS > 2
-  #error "MKS Robin Lite3 supports up to 2 hotends / E-steppers. Comment out this line to continue."
 #endif
 
-#ifndef BOARD_INFO_NAME
-  #define BOARD_INFO_NAME "MKS Robin Lite3"
-#endif
 #define BOARD_WEBSITE_URL "github.com/makerbase-mks"
 
 //#define DISABLE_DEBUG
 #define DISABLE_JTAG
 #define ENABLE_SPI2
+
+//
+// EEPROM
+//
+#if EITHER(NO_EEPROM_SELECTED, FLASH_EEPROM_EMULATION)
+  #define FLASH_EEPROM_EMULATION
+  #define EEPROM_PAGE_SIZE     (0x800U) // 2KB
+  #define EEPROM_START_ADDRESS (0x8000000UL + (STM32_FLASH_SIZE) * 1024UL - (EEPROM_PAGE_SIZE) * 2UL)
+  #define MARLIN_EEPROM_SIZE    EEPROM_PAGE_SIZE  // 2KB
+#endif
 
 //
 // Servos
@@ -72,30 +77,62 @@
 #define E0_DIR_PIN                          PB3
 #define E0_ENABLE_PIN                       PB5
 
-#define E1_STEP_PIN                         PC12
-#define E1_DIR_PIN                          PC11
-#define E1_ENABLE_PIN                       PD2
+#if HAS_TMC220x
+  /**
+   * TMC2208/TMC2209 stepper drivers
+   *
+   * Hardware serial communication ports.
+   * If undefined software serial is used according to the pins below
+   */
+  //#define X_HARDWARE_SERIAL  Serial1
+  //#define Y_HARDWARE_SERIAL  Serial1
+  //#define Z_HARDWARE_SERIAL  Serial1
+  //#define E0_HARDWARE_SERIAL Serial1
+
+  //
+  // Software serial
+  //
+  #define X_SERIAL_TX_PIN                   PC7
+  #define X_SERIAL_RX_PIN                   PC7
+
+  #define Y_SERIAL_TX_PIN                   PD2
+  #define Y_SERIAL_RX_PIN                   PD2
+
+  #define Z_SERIAL_TX_PIN                   PC12
+  #define Z_SERIAL_RX_PIN                   PC12
+
+  #define E0_SERIAL_TX_PIN                  PC11
+  #define E0_SERIAL_RX_PIN                  PC11
+
+  // Reduce baud rate to improve software serial reliability
+  #define TMC_BAUD_RATE 19200
+#endif
 
 //
 // Heaters 0,1 / Fans / Bed
 //
 #define HEATER_0_PIN                        PC9
-#define HEATER_1_PIN                        PC7
 #define FAN_PIN                             PA8
 #define HEATER_BED_PIN                      PC8
 
 //
 // Temperature Sensors
 //
-#define TEMP_BED_PIN                        PA1   //TB
-#define TEMP_0_PIN                          PA0   //TH1
-#define TEMP_1_PIN                          PA2   //TH2
+#define TEMP_BED_PIN                        PA1   // TB
+#define TEMP_0_PIN                          PA0   // TH1
 
 #define FIL_RUNOUT_PIN                      PB10  // MT_DET
 
-//
-// LCD Pins
-//
+/**
+ *                _____                                      _____                                     _____
+ *  (BEEPER) PC1 | 1 2 | PC3 (BTN_ENC)          (MISO) PB14 | 1 2 | PB13 (SD_SCK)                  5V | 1 2 | GND
+ *  (LCD_EN) PA4 | 3 4 | PA5 (LCD_RS)        (BTN_EN1) PB11 | 3 4 | PA15 (SD_SS)         (LCD_EN) PA4 | 3 4 | PA5  (LCD_RS)
+ *  (LCD_D4) PA6 | 5 6   PA7 (LCD_D5)        (BTN_EN2)  PB0 | 5 6   PB15 (SD_MOSI)       (LCD_D4) PA6 | 5 6   PB0  (BTN_EN2)
+ *  (LCD_D6) PC4 | 7 8 | PC5 (LCD_D7)      (SD_DETECT) PC10 | 7 8 | RESET                       RESET | 7 8 | PB11 (BTN_EN1)
+ *           GND | 9 10| 5V                             GND | 9 10| NC                  (BTN_ENC) PC3 | 9 10| PC1  (BEEPER)
+ *                -----                                      -----                                     -----
+ *                EXP1                                       EXP2                                      EXP3
+ */
 #if HAS_SPI_LCD
 
   #define BEEPER_PIN                        PC1
@@ -117,7 +154,7 @@
 
     #undef SHOW_BOOTSCREEN
 
-  #else                                           // !MKS_MINI_12864
+  #else
 
     #define LCD_PINS_D4                     PA6
     #if ENABLED(ULTIPANEL)
