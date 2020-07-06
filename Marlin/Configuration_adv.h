@@ -749,7 +749,7 @@
   #else
     // Amplification factor. Used to scale the correction step up or down in case
     // the stepper (spindle) position is farther out than the test point.
-    #define Z_STEPPER_ALIGN_AMP 1.0       // Use a value > 1.0 NOTE: This may cause instability!
+    #define Z_STEPPER_ALIGN_AMP 1.1       // Use a value > 1.0 NOTE: This may cause instability!
   #endif
 
   // On a 300mm bed a 5% grade would give a misalignment of ~1.5cm
@@ -1278,7 +1278,7 @@
    *
    * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
    */
-  //#define SDCARD_CONNECTION LCD
+  #define SDCARD_CONNECTION ONBOARD
 
 #endif // SDSUPPORT
 
@@ -2203,7 +2203,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT       600    // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       800    // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  400    // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     64    // 0..256
     #define X_RSENSE          0.075
@@ -2219,7 +2219,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       600
+    #define Y_CURRENT       800
     #define Y_CURRENT_HOME  400
     #define Y_MICROSTEPS     64
     #define Y_RSENSE          0.075
@@ -2413,8 +2413,8 @@
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
   // #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
-  // #define CHOPPER_TIMING { 3, -1, 5 }
-  #define CHOPPER_TIMING { 4, -2, 1 }
+  #define CHOPPER_TIMING { 3, -1, 5 }
+  // #define CHOPPER_TIMING { 4, -2, 1 }
 
   /**
    * Monitor Trinamic drivers
