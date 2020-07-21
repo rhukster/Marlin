@@ -2421,8 +2421,7 @@
    */
   // #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
   #define CHOPPER_TIMING { 3, -1, 5 }
-  // #define CHOPPER_TIMING { 4, -2, 1 }
-
+  
   /**
    * Monitor Trinamic drivers
    * for error conditions like overtemperature and short to ground.
