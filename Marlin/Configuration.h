@@ -752,7 +752,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.99*4, 160.25*4, 794.44*4, 324.6*4 } // 64 microsteps
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 630.71, 631.53, 3177.76, 6352.25 } // 64 microsteps
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.99, 160.25, 794.44, 324.6 } // 16 microsteps
 
 /**
