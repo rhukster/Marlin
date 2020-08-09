@@ -752,7 +752,8 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 630.71, 631.53, 3177.76, 1588.06 } // 64 microsteps
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 78.75, 78.94, 794.44, 324.6 } // 16 microsteps 1.8deg
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   { 630.71, 631.53, 3177.76, 1588.06 } // 64 microsteps
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.99, 160.25, 794.44, 324.6 } // 16 microsteps
 
 /**
@@ -790,7 +791,7 @@
  */
 #define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000   // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   1000   // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -800,7 +801,7 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-#define CLASSIC_JERK
+// #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
   #define DEFAULT_XJERK 10.0
   #define DEFAULT_YJERK 10.0

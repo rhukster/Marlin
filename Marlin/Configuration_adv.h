@@ -2212,7 +2212,7 @@
   #if AXIS_IS_TMC(X)
     #define X_CURRENT       800    // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  400    // (mA) RMS current for sensorless homing
-    #define X_MICROSTEPS     64    // 0..256
+    #define X_MICROSTEPS     16    // 0..256
     #define X_RSENSE          0.075
     #define X_CHAIN_POS      -1    // <=0 : Not chained. 1 : MCU MOSI connected. 2 : Next in chain, ...
   #endif
@@ -2228,7 +2228,7 @@
   #if AXIS_IS_TMC(Y)
     #define Y_CURRENT       800
     #define Y_CURRENT_HOME  400
-    #define Y_MICROSTEPS     64
+    #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.075
     #define Y_CHAIN_POS      -1
   #endif
@@ -2244,7 +2244,7 @@
   #if AXIS_IS_TMC(Z)
     #define Z_CURRENT       600
     #define Z_CURRENT_HOME  Z_CURRENT
-    #define Z_MICROSTEPS     64
+    #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.075
     #define Z_CHAIN_POS      -1
   #endif
@@ -2252,7 +2252,7 @@
   #if AXIS_IS_TMC(Z2)
     #define Z2_CURRENT      600
     #define Z2_CURRENT_HOME Z2_CURRENT
-    #define Z2_MICROSTEPS    64
+    #define Z2_MICROSTEPS    16
     #define Z2_RSENSE         0.075
     #define Z2_CHAIN_POS     -1
   #endif
@@ -2260,7 +2260,7 @@
   #if AXIS_IS_TMC(Z3)
     #define Z3_CURRENT      600
     #define Z3_CURRENT_HOME Z3_CURRENT
-    #define Z3_MICROSTEPS    64
+    #define Z3_MICROSTEPS    16
     #define Z3_RSENSE         0.075
     #define Z3_CHAIN_POS     -1
   #endif
@@ -2275,7 +2275,7 @@
 
   #if AXIS_IS_TMC(E0)
     #define E0_CURRENT      800
-    #define E0_MICROSTEPS    64
+    #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.075
     #define E0_CHAIN_POS     -1
   #endif
@@ -2420,8 +2420,8 @@
    * Define you own with
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  // #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
-  #define CHOPPER_TIMING { 3, -1, 5 }
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
+  // #define CHOPPER_TIMING { 3, -1, 5 }
   
   /**
    * Monitor Trinamic drivers
@@ -2449,7 +2449,7 @@
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  #define HYBRID_THRESHOLD
+  // #define HYBRID_THRESHOLD
 
   #define X_HYBRID_THRESHOLD     110  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
@@ -2523,7 +2523,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  #define SQUARE_WAVE_STEPPING
+  // #define SQUARE_WAVE_STEPPING
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.
