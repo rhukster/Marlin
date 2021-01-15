@@ -729,7 +729,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 78.75, 78.94, 794.44, 324.6 } // 16 microsteps 1.8deg
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.89, 79.91, 794.44, 324.6 } // 16 microsteps 1.8deg
 
 /**
  * Default Max Feed Rate (mm/s)

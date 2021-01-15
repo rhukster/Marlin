@@ -779,7 +779,7 @@
     // the Z screw positions in the bed carriage.
     // Define one position per Z stepper in stepper driver order.
 
-    #define Z_STEPPER_ALIGN_STEPPER_XY { {  347, 43.5 }, { 347, 297 }, { -36, 171 } }
+    #define Z_STEPPER_ALIGN_STEPPER_XY { {  346, 43 }, { 346, 297 }, { -40, 170} }
 
     // Amplification factor. Used to scale the correction step up or down in case
     // the stepper (spindle) position is farther out than the test point.
