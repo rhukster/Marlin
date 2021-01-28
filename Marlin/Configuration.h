@@ -482,13 +482,10 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  22.20
-    #define DEFAULT_Ki   1.08
-    #define DEFAULT_Kd 114.00
-  #endif
-  #define DEFAULT_Kp 39.86
-  #define DEFAULT_Ki 4.03
-  #define DEFAULT_Kd 98.45
+    #define DEFAULT_Kp 39.86
+    #define DEFAULT_Ki 4.03
+    #define DEFAULT_Kd 98.45
+  #endif  
 #endif // PIDTEMP
 
 //===========================================================================
@@ -1333,7 +1330,7 @@
   // Gradually reduce leveling correction until a set height is reached,
   // at which point movement will be level to the machine's XY plane.
   // The height can be set with M420 Z<height>
-  #define ENABLE_LEVELING_FADE_HEIGHT
+  // #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
   #endif
